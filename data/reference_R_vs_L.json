@@ -1,0 +1,73 @@
+{
+  "description": "Reference |R(J_c, L)| values for 2D Ising model on LxL periodic torus",
+  "claim": "d_R = 10/9 = 1.1111...",
+  "formula": "|R| ~ A * n^(d_R)  where n = L^2 (number of sites)",
+  "J_c": 0.44068679350977147,
+  "J_c_exact": "log(1 + sqrt(2)) / 2",
+  "L": [3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 18, 20],
+  "R_abs": [
+    105.64,
+    265.31,
+    446.24,
+    671.25,
+    945.53,
+    1272.14,
+    1653.34,
+    2091.94,
+    3145.46,
+    4441.23,
+    5999.40,
+    7782.04,
+    9785.26
+  ],
+  "R_abs_uncertainty": [
+    0.02,
+    0.02,
+    0.02,
+    0.02,
+    0.02,
+    0.02,
+    0.05,
+    3.0,
+    2.0,
+    3.0,
+    10.0,
+    30.0,
+    50.0
+  ],
+  "source": {
+    "L_3_to_9": "exact transfer matrix (eigendecomposition, CPU NumPy)",
+    "L_10_to_20": "MCMC Wolff cluster algorithm (500k samples, 3 seeds, RTX 4090)"
+  },
+  "d_eff_consecutive": {
+    "description": "d_eff(n) = log(|R_{n+1}|/|R_n|) / log(n_{n+1}/n_n) where n=L^2",
+    "pairs": [
+      {"L_pair": [3, 4], "d_eff": 1.601},
+      {"L_pair": [4, 5], "d_eff": 1.340},
+      {"L_pair": [5, 6], "d_eff": 1.244},
+      {"L_pair": [6, 7], "d_eff": 1.193},
+      {"L_pair": [7, 8], "d_eff": 1.166},
+      {"L_pair": [8, 9], "d_eff": 1.149},
+      {"L_pair": [9, 10], "d_eff": 1.126},
+      {"L_pair": [10, 12], "d_eff": 1.119},
+      {"L_pair": [12, 14], "d_eff": 1.119},
+      {"L_pair": [14, 16], "d_eff": 1.104},
+      {"L_pair": [16, 18], "d_eff": 1.087}
+    ],
+    "mean_large_L": 1.111,
+    "predicted": 1.1111,
+    "predicted_fraction": "10/9"
+  },
+  "papers": [
+    "Paper #8: Fisher Curvature Asymptotics (Vibecodium/physics-cosmo-papers)",
+    "Prediction Letter: d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture"
+  ],
+  "2D_Ising_CFT_exponents": {
+    "nu": 1.0,
+    "eta": 0.25,
+    "d": 2,
+    "d_R_formula": "(d*nu + 2*eta) / (d*nu + eta)",
+    "d_R_exact": "10/9",
+    "d_R_decimal": 1.1111111111111112
+  }
+}

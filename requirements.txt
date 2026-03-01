@@ -1,0 +1,27 @@
+# Replication package requirements for d_R = 10/9 verification
+# Tested with Python 3.10+ on macOS (M3 Max) and Ubuntu 22.04
+#
+# Minimal verification (TM L=3-7, CPU only, ~5 minutes):
+#   pip install numpy scipy matplotlib
+#
+# Full verification including MCMC and plotting:
+#   pip install -r requirements.txt
+#
+# GPU MCMC (optional, for L>=10 MCMC):
+#   pip install "jax[cuda12]" jaxlib
+#   (replaces the CPU jax lines below)
+
+# Core scientific stack
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+
+# Progress bars (for MCMC)
+tqdm>=4.65
+
+# JAX (optional, only needed for MCMC replication of L>=10 data)
+# CPU-only JAX (works on any machine without GPU):
+# jax>=0.4.20
+# jaxlib>=0.4.20
+
+# networkx is NOT required for the minimal TM script (topology is hard-coded)
