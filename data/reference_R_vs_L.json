@@ -59,8 +59,8 @@
     "predicted_fraction": "10/9"
   },
   "papers": [
-    "Paper #8: Fisher Curvature Asymptotics (Vibecodium/physics-cosmo-papers)",
-    "Prediction Letter: d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture"
+    "Prediction Letter: d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture (PRIMARY)",
+    "Paper #7: Curvature & Vacuum Einstein (Vibecodium/physics-cosmo-papers)"
   ],
   "2D_Ising_CFT_exponents": {
     "nu": 1.0,
