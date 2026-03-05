@@ -18,7 +18,8 @@ The exponent is predicted by conformal field theory via d_R = (d*nu + 2*eta) /
 (d*nu + eta), which for the 2D Ising universality class (d=2, nu=1, eta=1/4)
 gives exactly 2.5/2.25 = 10/9. This package provides exact transfer matrix
 scripts for L=3-9 and pre-computed MCMC reference data for L=10-20 (13 data
-points total, deviation from 10/9 of 0.054% at large L).
+points total, consecutive d_eff converging toward 10/9 from above, within ~2%
+for L >= 10).
 
 ---
 
@@ -85,8 +86,8 @@ For 2D Ising (d=2, nu=1, eta=1/4):
 
     d_R = 2.5 / 2.25 = 10/9 = 1.1111...
 
-**Verified numerically**: 13 data points L=3-20 (7 exact TM + 6 MCMC), deviation
-from 10/9 of 0.054% at large L.
+**Verified numerically**: 13 data points L=3-20 (7 exact TM + 6 MCMC), consecutive
+d_eff converging toward 10/9 from above, with large-L mean d_eff = 1.111 = 10/9.
 
 ---
 
@@ -234,26 +235,29 @@ MCMC values for L=10-20 have statistical uncertainty of ~1-2%.
 
 This package accompanies the Fisher curvature paper series:
 
-- **Paper #8** (Asymptotics): Primary paper on d_R scaling for 2D Ising.
-  Zenodo: https://zenodo.org/records/18807277
-
-- **Prediction Letter**: d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture for all CFTs.
+- **Prediction Letter** (PRIMARY): d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture for all CFTs.
   Zenodo: https://zenodo.org/records/18807279
 
 - **Paper #7** (Curvature): Riemann decomposition identity and vacuum Einstein condition.
   Zenodo: https://zenodo.org/records/18807275
 
-**Full collection (10 papers + DOIs)**:
+- ~~Paper #8 (Asymptotics)~~: **SUPERSEDED** -- the central theorem (c_2 ~ L^{2/9})
+  was falsified; actual behavior is c_2 ~ ln(L). The d_R exponent itself remains
+  valid as an empirical observable (see Prediction Letter), but Paper #8's analytical
+  derivation is incorrect. Zenodo record retained for transparency:
+  https://zenodo.org/records/18807277
+
+**Full collection (papers + DOIs)**:
 https://zenodo.org/records/18809947 (DOI: 10.5281/zenodo.18806742)
 
 ---
 
 ## Citation
 
-If you use this package, please cite the prediction letter:
+If you use this package, please cite the prediction letter (primary reference):
 
 ```
-@misc{fisher-curvature-replication,
+@misc{zhuravlev2026fisher,
   title  = {Fisher Curvature Scaling at Statistical Critical Points:
              A New Information-Geometric Exponent},
   author = {Zhuravlev, Maxim},
