@@ -258,8 +258,9 @@ If you use this package, please cite the prediction letter (primary reference):
 
 ```
 @misc{zhuravlev2026fisher,
-  title  = {Fisher Curvature Scaling at Statistical Critical Points:
-             A New Information-Geometric Exponent},
+  title  = {Fisher Curvature Scaling at Critical Points:
+             An Exact Information-Geometric Exponent from Periodic
+             Boundary Conditions},
   author = {Zhuravlev, Maxim},
   year   = {2026},
   doi    = {10.5281/zenodo.18807279},
