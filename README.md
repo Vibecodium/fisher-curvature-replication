@@ -158,6 +158,9 @@ Consecutive effective exponent d_eff converges from above toward 10/9 = 1.111:
     L9->L10: 1.126
     L10->L12: 1.119
     L12->L14: 1.119
+    L14->L16: 1.104
+    L16->L18: 1.087
+    L18->L20: 1.087
     mean (large L): 1.111 = 10/9
 
 ---
@@ -235,20 +238,21 @@ MCMC values for L=10-20 have statistical uncertainty of ~1-2%.
 
 This package accompanies the Fisher curvature paper series:
 
-- **Prediction Letter** (PRIMARY): d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture for all CFTs.
-  Zenodo: https://zenodo.org/records/18807279
+- **Prediction Letter** (PRIMARY): d_R = (d*nu + 2*eta)/(d*nu + eta) conjecture,
+  verified across 8 universality classes.
+  arXiv: [2603.07651](https://arxiv.org/abs/2603.07651) |
+  Zenodo: [10.5281/zenodo.18807279](https://zenodo.org/records/18807279)
 
-- **Paper #7** (Curvature): Riemann decomposition identity and vacuum Einstein condition.
-  Zenodo: https://zenodo.org/records/18807275
+- **Paper #10** (Proof): The Scaling Closure Theorem — complete proof of the d_R
+  formula from five structural assumptions (A1-A5), with universality verification
+  across 8 CFT classes.
 
-- ~~Paper #8 (Asymptotics)~~: **SUPERSEDED** -- the central theorem (c_2 ~ L^{2/9})
-  was falsified; actual behavior is c_2 ~ ln(L). The d_R exponent itself remains
-  valid as an empirical observable (see Prediction Letter), but Paper #8's analytical
-  derivation is incorrect. Zenodo record retained for transparency:
-  https://zenodo.org/records/18807277
+- **Paper #7** (Curvature): Riemann decomposition identity, vacuum Einstein condition,
+  and exact curvature formulas used in the proof.
+  Zenodo: [10.5281/zenodo.18807275](https://zenodo.org/records/18807275)
 
-**Full collection (papers + DOIs)**:
-https://zenodo.org/records/18809947 (DOI: 10.5281/zenodo.18806742)
+**Full paper series** (Papers #1--#3, #5--#7, #9--#10, Prediction Letter):
+Zenodo collection: [10.5281/zenodo.18806742](https://zenodo.org/records/18809947)
 
 ---
 
@@ -256,15 +260,17 @@ https://zenodo.org/records/18809947 (DOI: 10.5281/zenodo.18806742)
 
 If you use this package, please cite the prediction letter (primary reference):
 
-```
-@misc{zhuravlev2026fisher,
-  title  = {Fisher Curvature Scaling at Critical Points:
-             An Exact Information-Geometric Exponent from Periodic
-             Boundary Conditions},
-  author = {Zhuravlev, Maxim},
-  year   = {2026},
-  doi    = {10.5281/zenodo.18807279},
-  url    = {https://zenodo.org/records/18807279}
+```bibtex
+@article{zhuravlev2026fisher,
+  title         = {Fisher Curvature Scaling at Critical Points:
+                   An Exact Information-Geometric Exponent from Periodic
+                   Boundary Conditions},
+  author        = {Zhuravlev, Maxim},
+  year          = {2026},
+  eprint        = {2603.07651},
+  archivePrefix = {arXiv},
+  primaryClass  = {cond-mat.stat-mech},
+  doi           = {10.5281/zenodo.18807279}
 }
 ```
 
@@ -272,7 +278,7 @@ If you use this package, please cite the prediction letter (primary reference):
 
 ## License
 
-CC-BY-4.0. You are free to use, share, and adapt this material with attribution.
+MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
