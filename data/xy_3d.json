@@ -1,0 +1,30 @@
+{
+  "description": "Fisher information scalar curvature |R| for the 3D XY model on L x L x L periodic cubic torus at beta_c",
+  "model": "xy_3d",
+  "d": 3,
+  "nu": 0.6717,
+  "eta": 0.0381,
+  "d_R_predicted": 1.0185563997662186,
+  "d_R_predicted_approx": 1.019,
+  "J_c": 0.45420,
+  "J_c_name": "beta_c (3D XY)",
+  "data": [
+    {"L": 4,  "n": 64,   "abs_R": 356,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": null,  "jk_passes": 10},
+    {"L": 5,  "n": 125,  "abs_R": 714,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.038, "jk_passes": 10},
+    {"L": 6,  "n": 216,  "abs_R": 1249,    "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.022, "jk_passes": 10},
+    {"L": 7,  "n": 343,  "abs_R": 2010,    "abs_R_uncertainty": 14,   "method": "MCMC", "d_eff": 1.029, "jk_passes": 10},
+    {"L": 8,  "n": 512,  "abs_R": 3058,    "abs_R_uncertainty": 22,   "method": "MCMC", "d_eff": 1.048, "jk_passes": 10},
+    {"L": 9,  "n": 729,  "abs_R": 4459,    "abs_R_uncertainty": 25,   "method": "MCMC", "d_eff": 1.067, "jk_passes": 10},
+    {"L": 10, "n": 1000, "abs_R": 6127,    "abs_R_uncertainty": 51,   "method": "MCMC", "d_eff": 1.005, "jk_passes": 10}
+  ],
+  "notes": {
+    "method_detail": "Wolff cluster algorithm with FFT-accelerated Fisher matrix computation, 1M total samples with 10-pass jackknife error estimation",
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^3",
+    "convergence": "d_eff oscillates around 1.03, converging toward predicted 1.019. At L=10: d_eff(9->10) = 1.005 +/- 0.032.",
+    "compute": "Computed on RunPod A100 (1M samples, 10 jackknife passes)"
+  },
+  "papers": [
+    "arXiv:2603.07651 (Prediction Letter)",
+    "Paper #10: Scaling Closure Theorem"
+  ]
+}

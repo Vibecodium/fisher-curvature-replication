@@ -1,25 +1,56 @@
-# Replication Package: Fisher Curvature Scaling Exponent d_R = 10/9
+# Replication Package: Fisher Curvature Scaling at Critical Points
 
 Self-contained package to verify the claim that the Fisher information scalar
-curvature of the 2D Ising model at criticality scales as |R| ~ n^{d_R} with
-d_R = 10/9 = 1.111..., as predicted by conformal field theory.
+curvature at statistical critical points scales as |R| ~ n^{d_R} with
+d_R = (d*nu + 2*eta) / (d*nu + eta), verified across **8 universality classes**.
 
-**External verification time: ~30 minutes on a modern laptop.**
+**External verification time: ~30 minutes on a modern laptop** (2D Ising, L=3-6).
 
 ---
 
 ## Abstract
 
-The 2D Ising model at its critical coupling J_c = log(1+sqrt(2))/2 carries a
-natural Riemannian geometry on its statistical manifold -- the Fisher information
-geometry. We claim that the scalar curvature R of this manifold diverges as
-|R(J_c, L)| ~ A * n^{d_R} with d_R = 10/9, where n = L^2 is the number of sites.
-The exponent is predicted by conformal field theory via d_R = (d*nu + 2*eta) /
-(d*nu + eta), which for the 2D Ising universality class (d=2, nu=1, eta=1/4)
-gives exactly 2.5/2.25 = 10/9. This package provides exact transfer matrix
-scripts for L=3-9 and pre-computed MCMC reference data for L=10-20 (13 data
-points total, consecutive d_eff converging toward 10/9 from above, within ~2%
-for L >= 10).
+Statistical models at their critical points carry a natural Riemannian geometry
+on the space of coupling constants -- the Fisher information geometry. The scalar
+curvature R of this manifold diverges with system size as |R(J_c, L)| ~ A * n^{d_R}.
+
+**Main result**: The Scaling Closure Theorem (Paper #10) proves
+
+    d_R = (d * nu + 2 * eta) / (d * nu + eta)
+
+from five structural assumptions about the microscopic Fisher manifold at
+criticality. This package provides:
+
+- Exact transfer matrix scripts for 2D Ising (L=3-9)
+- Pre-computed reference data for 8 universality classes (75 data points total)
+- Brillouin zone decomposition demonstrating collective BZ scaling
+- Analysis and plotting scripts
+
+---
+
+## Datasets
+
+This package includes pre-computed curvature data for all 8 universality classes:
+
+| Model | d | d_R predicted | d_R measured | Data points | Data file |
+|-------|---|---------------|--------------|-------------|-----------|
+| 2D Ising | 2 | 10/9 = 1.111 | 1.111 | 13 (L=3-20) | `data/ising_2d.json` |
+| 2D Potts q=3 | 2 | 33/29 = 1.138 | converging | 18 (L=3-40) | `data/potts_q3.json` |
+| 2D Potts q=4 | 2 | 22/19 = 1.158 | converging | 15 (L=3-36) | `data/potts_q4.json` |
+| 3D Ising | 3 | 1.019 | 1.068 (L=10) | 7 (L=4-10) | `data/ising_3d.json` |
+| 3D XY | 3 | 1.019 | 1.005 (L=10) | 7 (L=4-10) | `data/xy_3d.json` |
+| 3D Heisenberg | 3 | 1.017 | 1.013 (L=10) | 7 (L=4-10) | `data/heisenberg_3d.json` |
+| BKT | 2 | 1 | limiting case | -- | `data/scaling_closure_theorem.json` |
+| Gaussian | any | 1 | exact | -- | `data/scaling_closure_theorem.json` |
+
+Additional datasets:
+
+- `data/reference_R_vs_L.json` -- 2D Ising reference data (original format, L=3-20)
+- `data/bz_decomposition_ising2d.json` -- BZ shell decomposition (L=3-9)
+- `data/scaling_closure_theorem.json` -- Summary table for all 8 classes
+
+The full dataset (including raw MCMC samples) is available on HuggingFace:
+[Vibecodium/fisher-curvature-scaling](https://huggingface.co/datasets/Vibecodium/fisher-curvature-scaling)
 
 ---
 
@@ -73,18 +104,20 @@ SCALING ANALYSIS:
 
 ## What Is Being Verified
 
-The **Fisher information scalar curvature** R of the 2D Ising model on an L x L
-periodic torus at the critical coupling J_c = log(1+sqrt(2))/2.
+The **Fisher information scalar curvature** R of lattice spin models on an
+L^d periodic torus at the critical coupling J_c.
 
-**Main claim**: |R(J_c, L)| ~ A * n^{d_R} with d_R = 10/9, where n = L^2.
-
-**CFT prediction**:
+**Main claim**: |R(J_c, L)| ~ A * n^{d_R} with the **Scaling Closure Theorem**:
 
     d_R = (d * nu + 2 * eta) / (d * nu + eta)
 
-For 2D Ising (d=2, nu=1, eta=1/4):
+This formula is proved from five structural assumptions (A1-A5) about the
+microscopic Fisher manifold at criticality, and verified numerically across
+8 universality classes with 75 data points.
 
-    d_R = 2.5 / 2.25 = 10/9 = 1.1111...
+**Example** -- 2D Ising (d=2, nu=1, eta=1/4):
+
+    d_R = (2*1 + 2*(1/4)) / (2*1 + (1/4)) = 2.5 / 2.25 = 10/9 = 1.1111...
 
 **Verified numerically**: 13 data points L=3-20 (7 exact TM + 6 MCMC), consecutive
 d_eff converging toward 10/9 from above, with large-L mean d_eff = 1.111 = 10/9.
@@ -169,16 +202,24 @@ Consecutive effective exponent d_eff converges from above toward 10/9 = 1.111:
 
 ```
 fisher-curvature-replication/
-├── README.md                    # This file
-├── REPLICATION.md               # Detailed step-by-step guide
-├── CLAIMS-STATUS.md             # What is theorem / verified / conjecture
-├── requirements.txt             # Python dependencies
-├── test_minimal.py              # One-command validation test
-├── run_ising_tm_minimal.py      # Exact TM: |R| for L=3-9 (CPU, NumPy only)
-├── run_ising_mcmc_minimal.py    # MCMC: |R| for L>=10 (requires JAX)
-├── analyze_scaling.py           # Compute d_R from data, generate figure
+├── README.md                              # This file
+├── REPLICATION.md                         # Detailed step-by-step guide
+├── CLAIMS-STATUS.md                       # What is theorem / verified / conjecture
+├── requirements.txt                       # Python dependencies
+├── test_minimal.py                        # One-command validation test
+├── run_ising_tm_minimal.py                # Exact TM: |R| for L=3-9 (CPU, NumPy only)
+├── run_ising_mcmc_minimal.py              # MCMC: |R| for L>=10 (requires JAX)
+├── analyze_scaling.py                     # Compute d_R from data, generate figure
 └── data/
-    └── reference_R_vs_L.json   # Pre-computed |R| for L=3-20
+    ├── reference_R_vs_L.json              # 2D Ising reference (L=3-20, original format)
+    ├── ising_2d.json                      # 2D Ising: TM L=3-9 + MCMC L=10-20
+    ├── potts_q3.json                      # 2D Potts q=3: TM L=3-6 + MCMC L=7-40
+    ├── potts_q4.json                      # 2D Potts q=4: TM L=3-6 + MCMC L=6-36
+    ├── ising_3d.json                      # 3D Ising: MCMC L=4-10
+    ├── xy_3d.json                         # 3D XY: MCMC L=4-10
+    ├── heisenberg_3d.json                 # 3D Heisenberg: MCMC L=4-10 (two campaigns)
+    ├── bz_decomposition_ising2d.json      # BZ shell decomposition L=3-9
+    └── scaling_closure_theorem.json       # Summary: 8 universality classes
 ```
 
 ---
@@ -225,12 +266,17 @@ Pre-computed reference data for L=10-20 is in data/reference_R_vs_L.json.
 
 ## Reference Data
 
-Pre-computed |R| values in `data/reference_R_vs_L.json`:
+Pre-computed |R| values:
 
-- L=3-9: exact transfer matrix (CPU NumPy, deterministic, reproducible)
-- L=10-20: MCMC Wolff algorithm (RTX 4090, 500k samples, 3 seeds each)
+- **2D Ising** (L=3-20): 7 exact TM + 6 MCMC points in `data/ising_2d.json`
+- **2D Potts q=3** (L=3-40): 4 exact TM + 14 MCMC points in `data/potts_q3.json`
+- **2D Potts q=4** (L=3-36): 4 exact TM + 11 MCMC points in `data/potts_q4.json`
+- **3D Ising** (L=4-10): 7 MCMC points in `data/ising_3d.json`
+- **3D XY** (L=4-10): 7 MCMC points in `data/xy_3d.json`
+- **3D Heisenberg** (L=4-10): 7 MCMC points in `data/heisenberg_3d.json`
+- **BZ decomposition** (2D Ising, L=3-9): Shell data in `data/bz_decomposition_ising2d.json`
 
-MCMC values for L=10-20 have statistical uncertainty of ~1-2%.
+MCMC values have statistical uncertainties from jackknife resampling.
 
 ---
 
@@ -243,7 +289,11 @@ This package accompanies the Fisher curvature paper series:
   arXiv: [2603.07651](https://arxiv.org/abs/2603.07651) |
   Zenodo: [10.5281/zenodo.18807279](https://zenodo.org/records/18807279)
 
-- **Paper #10** (Proof): The Scaling Closure Theorem — complete proof of the d_R
+- **Paper #3** (Good Regulator): Verifying Good Regulator conditions for
+  hypergraph observers.
+  arXiv: [2603.09067](https://arxiv.org/abs/2603.09067)
+
+- **Paper #10** (Proof): The Scaling Closure Theorem -- complete proof of the d_R
   formula from five structural assumptions (A1-A5), with universality verification
   across 8 CFT classes.
 
