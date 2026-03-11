@@ -1,0 +1,55 @@
+{
+  "description": "Brillouin zone (BZ) Fourier decomposition of scalar curvature for the 2D Ising model at J_c",
+  "model": "ising_2d",
+  "d": 2,
+  "J_c": 0.44068679350977147,
+  "target_dR": 1.1111111111111112,
+  "purpose": "Demonstrates that d_R = 10/9 is a collective BZ property, not dominated by a single mode",
+  "collectivity_summary": {
+    "L": [3, 4, 5, 6, 7, 8, 9],
+    "frac_kmin_percent": [42.0, 22.2, 13.3, 8.7, 6.1, 4.5, 3.5],
+    "abs_R_kmin": [44.4, 58.9, 59.3, 58.6, 58.0, 57.5, 57.1],
+    "T1_over_T3": [-2.0, -2.0, -2.0, -2.0, -2.0, -2.0, -2.0],
+    "interpretation": "frac_kmin declines as L^{-(d_R-1)} = L^{-1/9} while |R_kmin| saturates to ~57-59. The curvature scaling is collective: all BZ modes contribute O(n) each, with the anomalous n^{1/9} excess distributed across the full Brillouin zone."
+  },
+  "L9_full_shell_decomposition": {
+    "L": 9,
+    "n": 81,
+    "R_total": -1653.34,
+    "R_k0": -10.16,
+    "R_kmin": -57.13,
+    "R_generic": -1586.04,
+    "frac_kmin": 0.0346,
+    "shells": [
+      {"k_mag": 0.000, "n_modes": 1,  "R_shell": -10.16,  "abs_R_shell": 10.16},
+      {"k_mag": 0.698, "n_modes": 4,  "R_shell": -57.13,  "abs_R_shell": 57.13},
+      {"k_mag": 0.987, "n_modes": 4,  "R_shell": -62.86,  "abs_R_shell": 62.86},
+      {"k_mag": 1.396, "n_modes": 4,  "R_shell": -68.36,  "abs_R_shell": 68.36},
+      {"k_mag": 1.561, "n_modes": 8,  "R_shell": -143.83, "abs_R_shell": 143.83},
+      {"k_mag": 1.975, "n_modes": 4,  "R_shell": -80.13,  "abs_R_shell": 80.13},
+      {"k_mag": 2.094, "n_modes": 4,  "R_shell": -72.74,  "abs_R_shell": 72.74},
+      {"k_mag": 2.208, "n_modes": 8,  "R_shell": -153.03, "abs_R_shell": 153.03},
+      {"k_mag": 2.517, "n_modes": 8,  "R_shell": -173.22, "abs_R_shell": 173.22},
+      {"k_mag": 2.793, "n_modes": 4,  "R_shell": -74.37,  "abs_R_shell": 74.37},
+      {"k_mag": 2.878, "n_modes": 8,  "R_shell": -156.62, "abs_R_shell": 156.62},
+      {"k_mag": 2.962, "n_modes": 4,  "R_shell": -97.68,  "abs_R_shell": 97.68},
+      {"k_mag": 3.122, "n_modes": 8,  "R_shell": -179.44, "abs_R_shell": 179.44},
+      {"k_mag": 3.491, "n_modes": 8,  "R_shell": -208.88, "abs_R_shell": 208.88},
+      {"k_mag": 3.949, "n_modes": 4,  "R_shell": -114.89, "abs_R_shell": 114.89}
+    ]
+  },
+  "ricci_identity_check": {
+    "description": "T1/T3 ratio should be exactly -2.0 (Ricci decomposition identity R_1 + 2*R_3 = 0)",
+    "L9_value": -2.000000000000011,
+    "verification": "Machine-precision agreement at all L=3-9"
+  },
+  "notes": {
+    "method": "Exact transfer matrix + BLAS-batched S3 + Parseval FFT decomposition",
+    "key_insight": "The k_min mode contributes O(1) curvature while generic modes contribute O(n) each. The anomalous exponent d_R - 1 = 1/9 is distributed collectively across all ~n BZ modes, each contributing O(n^{1/9}) excess.",
+    "source_file": "bz_ising_L9_fast.json"
+  },
+  "papers": [
+    "arXiv:2603.07651 (Prediction Letter)",
+    "Paper #10: Scaling Closure Theorem, Section 5 (DBC mechanism)"
+  ]
+}

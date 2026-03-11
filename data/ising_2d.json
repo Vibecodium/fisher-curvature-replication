@@ -1,0 +1,37 @@
+{
+  "description": "Fisher information scalar curvature |R| for the 2D Ising model on L x L periodic torus at J_c",
+  "model": "ising_2d",
+  "d": 2,
+  "q": 2,
+  "nu": 1.0,
+  "eta": 0.25,
+  "d_R_predicted": 1.1111111111111112,
+  "d_R_predicted_fraction": "10/9",
+  "J_c": 0.44068679350977147,
+  "J_c_exact": "log(1 + sqrt(2)) / 2",
+  "data": [
+    {"L": 3,  "n": 9,    "abs_R": 105.64,   "abs_R_uncertainty": null, "method": "TM", "d_eff": null},
+    {"L": 4,  "n": 16,   "abs_R": 265.31,   "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.601},
+    {"L": 5,  "n": 25,   "abs_R": 446.24,   "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.165},
+    {"L": 6,  "n": 36,   "abs_R": 671.25,   "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.120},
+    {"L": 7,  "n": 49,   "abs_R": 945.53,   "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.111},
+    {"L": 8,  "n": 64,   "abs_R": 1272.14,  "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.1110},
+    {"L": 9,  "n": 81,   "abs_R": 1653.34,  "abs_R_uncertainty": null, "method": "TM", "d_eff": 1.113},
+    {"L": 10, "n": 100,  "abs_R": 2091.94,  "abs_R_uncertainty": 3.0,  "method": "MCMC", "d_eff": 1.117},
+    {"L": 12, "n": 144,  "abs_R": 3145.46,  "abs_R_uncertainty": 2.0,  "method": "MCMC", "d_eff": 1.119},
+    {"L": 14, "n": 196,  "abs_R": 4441.23,  "abs_R_uncertainty": 3.0,  "method": "MCMC", "d_eff": 1.119},
+    {"L": 16, "n": 256,  "abs_R": 5999.40,  "abs_R_uncertainty": 10.0, "method": "MCMC", "d_eff": 1.104},
+    {"L": 18, "n": 324,  "abs_R": 7782.04,  "abs_R_uncertainty": 30.0, "method": "MCMC", "d_eff": 1.087},
+    {"L": 20, "n": 400,  "abs_R": 9785.26,  "abs_R_uncertainty": 50.0, "method": "MCMC", "d_eff": 1.087}
+  ],
+  "notes": {
+    "TM": "Exact transfer matrix with 4-sector Wick contraction (CPU, deterministic)",
+    "MCMC": "Wolff cluster algorithm, 500k samples, 3 seeds, RTX 4090",
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^2"
+  },
+  "papers": [
+    "arXiv:2603.07651 (Prediction Letter)",
+    "Paper #7: Curvature & Vacuum Einstein (Zenodo:10.5281/zenodo.18807275)",
+    "Paper #10: Scaling Closure Theorem"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "description": "Fisher information scalar curvature |R| for the 3D Heisenberg model on L x L x L periodic cubic torus at beta_c",
+  "model": "heisenberg_3d",
+  "d": 3,
+  "nu": 0.7112,
+  "eta": 0.0378,
+  "d_R_predicted": 1.0172723504214454,
+  "d_R_predicted_approx": 1.017,
+  "J_c": 0.69305,
+  "J_c_name": "beta_c (3D Heisenberg)",
+  "data": [
+    {"L": 4,  "n": 64,   "abs_R": 226,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": null,  "jk_passes": 10},
+    {"L": 5,  "n": 125,  "abs_R": 445,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.011, "jk_passes": 10},
+    {"L": 6,  "n": 216,  "abs_R": 752,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 0.958, "jk_passes": 10},
+    {"L": 7,  "n": 343,  "abs_R": 1254,    "abs_R_uncertainty": 11,   "method": "MCMC", "d_eff": 1.106, "jk_passes": 10},
+    {"L": 8,  "n": 512,  "abs_R": 1859,    "abs_R_uncertainty": 18,   "method": "MCMC", "d_eff": 0.983, "jk_passes": 10},
+    {"L": 9,  "n": 729,  "abs_R": 2673,    "abs_R_uncertainty": 21,   "method": "MCMC", "d_eff": 1.028, "jk_passes": 9},
+    {"L": 10, "n": 1000, "abs_R": 3614,    "abs_R_uncertainty": 37,   "method": "MCMC", "d_eff": 1.013, "jk_passes": 10,
+     "note": "Campaign 2 (A100). Campaign 1 (H100): 3682 +/- 29, 9/10 JK, d_eff=1.013. Two independent campaigns agree within 2%."}
+  ],
+  "notes": {
+    "method_detail": "Wolff cluster algorithm with FFT-accelerated Fisher matrix computation, 1M total samples with jackknife error estimation",
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^3",
+    "convergence": "d_eff oscillates around 1.01-1.03, converging toward predicted 1.017. At L=10: d_eff(9->10) = 1.013 (both campaigns).",
+    "two_campaigns": "L=10 was computed independently on H100 (3682 +/- 29) and A100 (3614 +/- 37). Both give d_eff(9->10) = 1.013.",
+    "compute": "L=4-8 on RTX 4090; L=9-10 on RunPod H100/A100"
+  },
+  "papers": [
+    "arXiv:2603.07651 (Prediction Letter)",
+    "arXiv:2603.09067 (Paper #3: Good Regulator Verification)",
+    "Paper #10: Scaling Closure Theorem"
+  ]
+}

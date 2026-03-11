@@ -1,0 +1,44 @@
+{
+  "description": "Fisher information scalar curvature |R| for the q=3 Potts model on L x L periodic torus at J_c",
+  "model": "potts_q3",
+  "d": 2,
+  "q": 3,
+  "nu": 0.8333333333333334,
+  "nu_exact": "5/6",
+  "eta": 0.26666666666666666,
+  "eta_exact": "4/15",
+  "d_R_predicted": 1.1379310344827587,
+  "d_R_predicted_fraction": "33/29",
+  "J_c": 1.005052538742381,
+  "J_c_exact": "log(1 + sqrt(3))",
+  "data": [
+    {"L": 3,  "n": 9,    "abs_R": 79.85,    "abs_R_uncertainty": null,  "method": "TM",   "d_eff": null},
+    {"L": 4,  "n": 16,   "abs_R": 208.15,   "abs_R_uncertainty": null,  "method": "TM",   "d_eff": 1.664},
+    {"L": 5,  "n": 25,   "abs_R": 359.51,   "abs_R_uncertainty": null,  "method": "TM",   "d_eff": 1.225},
+    {"L": 6,  "n": 36,   "abs_R": 552.90,   "abs_R_uncertainty": null,  "method": "TM",   "d_eff": 1.181},
+    {"L": 7,  "n": 49,   "abs_R": 790.4,    "abs_R_uncertainty": 5.6,   "method": "MCMC", "d_eff": null},
+    {"L": 8,  "n": 64,   "abs_R": 1086.4,   "abs_R_uncertainty": 9.5,   "method": "MCMC", "d_eff": null},
+    {"L": 10, "n": 100,  "abs_R": 1841.5,   "abs_R_uncertainty": 8.5,   "method": "MCMC", "d_eff": null},
+    {"L": 12, "n": 144,  "abs_R": 2831.6,   "abs_R_uncertainty": 7.7,   "method": "MCMC", "d_eff": null},
+    {"L": 14, "n": 196,  "abs_R": 4111.6,   "abs_R_uncertainty": 33.7,  "method": "MCMC", "d_eff": null},
+    {"L": 16, "n": 256,  "abs_R": 5652.0,   "abs_R_uncertainty": 40.3,  "method": "MCMC", "d_eff": null},
+    {"L": 18, "n": 324,  "abs_R": 7480.4,   "abs_R_uncertainty": 7.1,   "method": "MCMC", "d_eff": null},
+    {"L": 20, "n": 400,  "abs_R": 9647.8,   "abs_R_uncertainty": 18.6,  "method": "MCMC", "d_eff": null},
+    {"L": 24, "n": 576,  "abs_R": 15101.7,  "abs_R_uncertainty": 114.9, "method": "MCMC", "d_eff": null},
+    {"L": 28, "n": 784,  "abs_R": 21855.9,  "abs_R_uncertainty": 207.4, "method": "MCMC", "d_eff": null},
+    {"L": 32, "n": 1024, "abs_R": 30138.5,  "abs_R_uncertainty": 214.8, "method": "MCMC", "d_eff": 1.194},
+    {"L": 36, "n": 1296, "abs_R": 39473.1,  "abs_R_uncertainty": null,  "method": "MCMC", "d_eff": null},
+    {"L": 38, "n": 1444, "abs_R": 45206.2,  "abs_R_uncertainty": 431.3, "method": "MCMC", "d_eff": null},
+    {"L": 40, "n": 1600, "abs_R": 52781.8,  "abs_R_uncertainty": 466.8, "method": "MCMC", "d_eff": 1.256}
+  ],
+  "notes": {
+    "TM": "Exact transfer matrix (CPU, deterministic). L=3-6 from dR_potts3_tm_L3-8.json.",
+    "MCMC": "Wolff cluster algorithm, FFT-accelerated, 500k samples. L=7-20 use 3 seeds; L=24-40 use 20-chunk jackknife.",
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^2",
+    "convergence": "d_eff(32->40) = 1.256 at these sizes; corrections to scaling are large. Bayesian fit consistent with 33/29 = 1.138."
+  },
+  "papers": [
+    "arXiv:2603.07651 (Prediction Letter)",
+    "Paper #10: Scaling Closure Theorem"
+  ]
+}
