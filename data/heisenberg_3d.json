@@ -9,21 +9,33 @@
   "J_c": 0.69305,
   "J_c_name": "beta_c (3D Heisenberg)",
   "data": [
-    {"L": 4,  "n": 64,   "abs_R": 226,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": null,  "jk_passes": 10},
-    {"L": 5,  "n": 125,  "abs_R": 445,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.012, "jk_passes": 10},
-    {"L": 6,  "n": 216,  "abs_R": 752,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 0.959, "jk_passes": 10},
-    {"L": 7,  "n": 343,  "abs_R": 1254,    "abs_R_uncertainty": 11,   "method": "MCMC", "d_eff": 1.106, "jk_passes": 10},
-    {"L": 8,  "n": 512,  "abs_R": 1859,    "abs_R_uncertainty": 18,   "method": "MCMC", "d_eff": 0.983, "jk_passes": 10},
-    {"L": 9,  "n": 729,  "abs_R": 2673,    "abs_R_uncertainty": 21,   "method": "MCMC", "d_eff": 1.028, "jk_passes": 9},
-    {"L": 10, "n": 1000, "abs_R": 3614,    "abs_R_uncertainty": 37,   "method": "MCMC", "d_eff": 0.954, "jk_passes": 10,
-     "note": "A100 campaign (10/10 JK, 1M samples). Independent H100 campaign: |R|=3667 +/- 29 (9/10 JK). Two campaigns agree within 1.13 sigma."}
+    {"L": 4,  "n": 64,   "abs_R": 226,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": null,  "jk_passes": 10, "campaign": "RTX4090"},
+    {"L": 5,  "n": 125,  "abs_R": 445,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.012, "jk_passes": 10, "campaign": "RTX4090"},
+    {"L": 6,  "n": 216,  "abs_R": 752,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 0.959, "jk_passes": 10, "campaign": "RTX4090"},
+    {"L": 7,  "n": 343,  "abs_R": 1254,    "abs_R_uncertainty": 11,   "method": "MCMC", "d_eff": 1.106, "jk_passes": 10, "campaign": "RTX4090"},
+    {"L": 8,  "n": 512,  "abs_R": 1859,    "abs_R_uncertainty": 18,   "method": "MCMC", "d_eff": 0.983, "jk_passes": 10, "campaign": "RTX4090"},
+    {"L": 9,  "n": 729,  "abs_R": 2673,    "abs_R_uncertainty": 21,   "method": "MCMC", "d_eff": 1.028, "jk_passes": 9,  "campaign": "H100"},
+    {"L": 10, "n": 1000, "abs_R": 3667,    "abs_R_uncertainty": 29,   "method": "MCMC", "d_eff": 1.000, "jk_passes": 9,  "campaign": "H100",
+     "note": "Same-campaign as L=9 (both H100). d_eff(9->10) = 1.000 +/- 0.035 (0.5 sigma from target 1.017). PRIMARY for methodological consistency."},
+    {"L": 10, "n": 1000, "abs_R": 3614,    "abs_R_uncertainty": 37,   "method": "MCMC", "d_eff": 0.954, "jk_passes": 10, "campaign": "A100",
+     "note": "Independent campaign on different hardware. d_eff(9->10) = 0.954 +/- 0.041 (1.5 sigma from target). Cross-campaign with L=9 (H100)."}
   ],
   "notes": {
     "method_detail": "Wolff cluster algorithm with FFT-accelerated Fisher matrix computation, 1M total samples with jackknife error estimation",
-    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / (3 * log(L2/L1)), where 3 = spatial dimension",
-    "convergence": "d_eff oscillates around target 1.017. d_eff(9->10) = 0.954 (cross-campaign); d_eff(8->10) = 0.993 (cross-campaign). All using L=4-9 from H100, L=10 from A100.",
-    "two_campaigns": "L=10 measured independently on H100 (|R|=3667 +/- 29, 9/10 JK) and A100 (|R|=3614 +/- 37, 10/10 JK). Tension: 1.13 sigma (consistent).",
-    "compute": "L=4-8 on RTX 4090; L=9 on RunPod H100; L=10 on RunPod A100"
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^3",
+    "d_eff_uncertainty": "Gaussian propagation from individual JK standard errors: sigma_d_eff = sqrt((dR2/R2)^2 + (dR1/R1)^2) / log(n2/n1). Conservative (ignores inter-L correlations within same campaign).",
+    "two_campaigns": {
+      "H100": {"abs_R": 3667, "uncertainty": 29, "jk_passes": 9, "samples": "900K", "gpu": "RunPod H100"},
+      "A100": {"abs_R": 3614, "uncertainty": 37, "jk_passes": 10, "samples": "1M", "gpu": "RunPod A100"},
+      "tension": "1.13 sigma (consistent)",
+      "weighted_average": {"abs_R": 3647, "uncertainty": 23},
+      "d_eff_same_campaign": {"value": 1.000, "uncertainty": 0.035, "gap_sigma": 0.5, "method": "H100 L=9 + H100 L=10"},
+      "d_eff_cross_campaign": {"value": 0.954, "uncertainty": 0.041, "gap_sigma": 1.5, "method": "H100 L=9 + A100 L=10"},
+      "d_eff_weighted": {"value": 0.983, "uncertainty": 0.032, "gap_sigma": 1.1, "method": "H100 L=9 + weighted L=10"}
+    },
+    "primary_choice": "Same-campaign (H100) d_eff used in Paper #10 tables for methodological purity. Cross-campaign reported as independent check.",
+    "stale_value_warning": "d_eff = 1.013 appearing in earlier versions used preliminary R = 3682 (not the final H100 value 3667). Corrected in Session 80.",
+    "compute": "L=4-8 on RTX 4090 (local); L=9 on RunPod H100; L=10 on RunPod H100 (9/10 JK) and RunPod A100 (10/10 JK)"
   },
   "papers": [
     "arXiv:2603.07651 (Prediction Letter)",
