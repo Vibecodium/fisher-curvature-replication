@@ -49,8 +49,8 @@ Additional datasets:
 - `data/bz_decomposition_ising2d.json` -- BZ shell decomposition (L=3-9)
 - `data/scaling_closure_theorem.json` -- Summary table for all 8 classes
 
-The full dataset (including raw MCMC samples) is available on HuggingFace:
-[Vibecodium/fisher-curvature-scaling](https://huggingface.co/datasets/Vibecodium/fisher-curvature-scaling)
+The full dataset is also available on HuggingFace:
+[Zhuravlev/fisher-curvature-scaling](https://huggingface.co/datasets/Zhuravlev/fisher-curvature-scaling)
 
 ---
 
