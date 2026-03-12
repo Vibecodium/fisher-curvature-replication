@@ -10,24 +10,24 @@
   "J_c_name": "beta_c (3D Heisenberg)",
   "data": [
     {"L": 4,  "n": 64,   "abs_R": 226,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": null,  "jk_passes": 10},
-    {"L": 5,  "n": 125,  "abs_R": 445,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.011, "jk_passes": 10},
-    {"L": 6,  "n": 216,  "abs_R": 752,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 0.958, "jk_passes": 10},
+    {"L": 5,  "n": 125,  "abs_R": 445,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 1.012, "jk_passes": 10},
+    {"L": 6,  "n": 216,  "abs_R": 752,     "abs_R_uncertainty": null, "method": "MCMC", "d_eff": 0.959, "jk_passes": 10},
     {"L": 7,  "n": 343,  "abs_R": 1254,    "abs_R_uncertainty": 11,   "method": "MCMC", "d_eff": 1.106, "jk_passes": 10},
     {"L": 8,  "n": 512,  "abs_R": 1859,    "abs_R_uncertainty": 18,   "method": "MCMC", "d_eff": 0.983, "jk_passes": 10},
     {"L": 9,  "n": 729,  "abs_R": 2673,    "abs_R_uncertainty": 21,   "method": "MCMC", "d_eff": 1.028, "jk_passes": 9},
-    {"L": 10, "n": 1000, "abs_R": 3614,    "abs_R_uncertainty": 37,   "method": "MCMC", "d_eff": 1.013, "jk_passes": 10,
-     "note": "Campaign 2 (A100). Campaign 1 (H100): 3682 +/- 29, 9/10 JK, d_eff=1.013. Two independent campaigns agree within 2%."}
+    {"L": 10, "n": 1000, "abs_R": 3614,    "abs_R_uncertainty": 37,   "method": "MCMC", "d_eff": 0.954, "jk_passes": 10,
+     "note": "A100 campaign (10/10 JK, 1M samples). Independent H100 campaign: |R|=3667 +/- 29 (9/10 JK). Two campaigns agree within 1.13 sigma."}
   ],
   "notes": {
     "method_detail": "Wolff cluster algorithm with FFT-accelerated Fisher matrix computation, 1M total samples with jackknife error estimation",
-    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / log(n2/n1), where n = L^3",
-    "convergence": "d_eff oscillates around 1.01-1.03, converging toward predicted 1.017. At L=10: d_eff(9->10) = 1.013 (both campaigns).",
-    "two_campaigns": "L=10 was computed independently on H100 (3682 +/- 29) and A100 (3614 +/- 37). Both give d_eff(9->10) = 1.013.",
-    "compute": "L=4-8 on RTX 4090; L=9-10 on RunPod H100/A100"
+    "d_eff_definition": "d_eff(L1 -> L2) = log(|R(L2)|/|R(L1)|) / (3 * log(L2/L1)), where 3 = spatial dimension",
+    "convergence": "d_eff oscillates around target 1.017. d_eff(9->10) = 0.954 (cross-campaign); d_eff(8->10) = 0.993 (cross-campaign). All using L=4-9 from H100, L=10 from A100.",
+    "two_campaigns": "L=10 measured independently on H100 (|R|=3667 +/- 29, 9/10 JK) and A100 (|R|=3614 +/- 37, 10/10 JK). Tension: 1.13 sigma (consistent).",
+    "compute": "L=4-8 on RTX 4090; L=9 on RunPod H100; L=10 on RunPod A100"
   },
   "papers": [
     "arXiv:2603.07651 (Prediction Letter)",
-    "arXiv:2603.09067 (Paper #3: Good Regulator Verification)",
-    "Paper #10: Scaling Closure Theorem"
+    "Paper #7: Curvature & Vacuum Einstein (submitted, on hold)",
+    "Paper #10: Scaling Closure Theorem (incomplete upload)"
   ]
 }
