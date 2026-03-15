@@ -9,7 +9,7 @@ What is proved, verified, or conjectured.
 | 3 | Tree => G_ab = 0 (vacuum Einstein condition, Ising h=0) | **Theorem (proved)** | Algebraic proof via tree decomposition | Paper #7 S5 |
 | 4 | Non-tree => exists couplings with G_ab != 0 | **Conjecture + census** | 839 connected graphs n<=7 (100%) | Paper #7 S5 |
 | 5 | d_R = 10/9 for 2D Ising (large-L d_eff mean = 1.111) | **Numerically verified** | Exact TM L=3-9 + MCMC L=10-20 (13 points) | Prediction Letter |
-| 6 | d_R formula: (d nu + 2 eta)/(d nu + eta) from CFT | **Theorem (99.95%+)** | 5 assumptions (A1-A5); A1,A2,A4 proved; A3 99.95%+; A5 99.9%+ | Paper #10 |
+| 6 | d_R formula: (d nu + 2 eta)/(d nu + eta) from CFT | **Theorem (conditional on A3, A5)** | 5 assumptions (A1-A5); A1,A2,A4 proved; A3 conditional; A5 conditional | Paper #10 |
 | 7 | Scalar Ricci identity (Riemann tensor identity, Ising h=0) | **Proved (C_n), verified (42 families)** | Sage + numeric | Paper #7 S4 |
 | 8 | BZ collectivity: d_R is collective (not single-mode) | **Numerically verified** | frac_kmin: 42%->3.5% (L=3-9); \|R_kmin\| ~ O(1) flat | Paper #10 S5 |
 | 9 | d_R formula universality for all CFTs | **Verified (8 classes)** | 2D Ising, Potts q=3,4, 3D Ising/XY/Heisenberg, BKT, Gaussian | Paper #10 S7 |
@@ -66,9 +66,9 @@ structural assumptions about the microscopic Fisher manifold at criticality:
 |------------|-----------|--------|
 | A1 | Ricci decomposition identity | **PROVED** (algebraic, SymPy verified) |
 | A2 | Z_2 fusion rule (kappa3 = 0 at k_min) | **PROVED** (OPE selection rule) |
-| A3 | Diagonal block cancellation (DBC) | **99.95%+** (3 sub-gaps proved; FK assembly) |
+| A3 | Diagonal block cancellation (DBC) | **Conditional** (3 sub-gaps proved; FK assembly rigorous) |
 | A4 | Eigenvalue anisotropy (alpha_1 - alpha_2 = 2 - eta) | **PROVED** (standard CFT) |
-| A5 | Triangle non-cancellation (N_eff != 0) | **99.9%+** (codimension + OPE positivity) |
+| A5 | Triangle non-cancellation (N_eff != 0) | **Conditional** (codimension argument + OPE positivity) |
 
 The proof proceeds in 7 steps: Ricci reduction -> Z_2 elimination -> BZ decomposition
 -> DBC (generic modes O(n)) -> k_min dominance -> exponent extraction -> Pade uniqueness.
@@ -79,7 +79,7 @@ The proof proceeds in 7 steps: Ricci reduction -> Z_2 elimination -> BZ decompos
 2. **Numerically verified**: Computed to high precision, consistent with claim.
 3. **Converging**: Data trending toward predicted value; corrections to scaling still active.
 4. **Conjecture + census**: Verified on all small cases, no counterexample found.
-5. **99.95%+**: All sub-components proved; final assembly is rigorous modulo standard FK results.
+5. **Conditional**: All sub-components proved; final assembly is rigorous modulo standard FK results.
 
 ## What an External Replicator Can Verify in 30 Minutes
 
