@@ -94,11 +94,11 @@
       "eta_exact": null,
       "d_R_predicted": 1.017,
       "d_R_fraction": null,
-      "d_R_measured": "1.013 (d_eff at L=9-10, two independent campaigns)",
-      "deviation_percent": 0.4,
+      "d_R_measured": "1.000 (d_eff at L=9-10, same-campaign H100 primary)",
+      "deviation_percent": 1.0,
       "n_data_points": 7,
       "L_range": "4-10",
-      "status": "CONVERGING (within 0.4% at L=10, two campaigns agree)"
+      "status": "CONVERGING (within 1.0% at L=10, 0.5 sigma from target)"
     },
     {
       "model": "BKT (2D clock/XY)",
