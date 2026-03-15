@@ -34,7 +34,7 @@
       "d_eff_weighted": {"value": 0.983, "uncertainty": 0.032, "gap_sigma": 1.1, "method": "H100 L=9 + weighted L=10"}
     },
     "primary_choice": "Same-campaign (H100) d_eff used in Paper #10 tables for methodological purity. Cross-campaign reported as independent check.",
-    "stale_value_warning": "d_eff = 1.013 appearing in earlier versions used preliminary R = 3682 (not the final H100 value 3667). Corrected in Session 80.",
+    "stale_value_warning": "d_eff = 1.013 appearing in earlier versions used preliminary R = 3682 (not the final H100 value 3667).",
     "compute": "L=4-8 on RTX 4090 (local); L=9 on RunPod H100; L=10 on RunPod H100 (9/10 JK) and RunPod A100 (10/10 JK)"
   },
   "papers": [

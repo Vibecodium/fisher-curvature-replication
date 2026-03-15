@@ -39,7 +39,7 @@ This package includes pre-computed curvature data for all 8 universality classes
 | 2D Potts q=4 | 2 | 22/19 = 1.158 | converging | 15 (L=3-36) | `data/potts_q4.json` |
 | 3D Ising | 3 | 1.019 | 1.068 (L=10) | 7 (L=4-10) | `data/ising_3d.json` |
 | 3D XY | 3 | 1.019 | 1.005 (L=10) | 7 (L=4-10) | `data/xy_3d.json` |
-| 3D Heisenberg | 3 | 1.017 | 1.013 (L=10) | 7 (L=4-10) | `data/heisenberg_3d.json` |
+| 3D Heisenberg | 3 | 1.017 | 1.000 (L=10) | 7 (L=4-10) | `data/heisenberg_3d.json` |
 | BKT | 2 | 1 | limiting case | -- | `data/scaling_closure_theorem.json` |
 | Gaussian | any | 1 | exact | -- | `data/scaling_closure_theorem.json` |
 
@@ -312,9 +312,8 @@ If you use this package, please cite the prediction letter (primary reference):
 
 ```bibtex
 @article{zhuravlev2026fisher,
-  title         = {Fisher Curvature Scaling at Critical Points:
-                   An Exact Information-Geometric Exponent from Periodic
-                   Boundary Conditions},
+  title         = {Fisher Curvature Scaling at Statistical Critical Points:
+                   A New Information-Geometric Exponent},
   author        = {Zhuravlev, Maxim},
   year          = {2026},
   eprint        = {2603.07651},

@@ -18,7 +18,7 @@ What is proved, verified, or conjectured.
 | 12 | d_R converges for Potts q=4 toward 22/19 | **Converging (slow)** | 15 data points L=3-36; Bayesian fit d_R=1.167+/-0.142 consistent | Paper #10 S7 |
 | 13 | d_R converges for 3D Ising toward 1.019 | **Converging** | 7 points L=4-10; d_eff(9->10)=1.068+/-0.008 | Paper #10 S7 |
 | 14 | d_R converges for 3D XY toward 1.019 | **Converging** | 7 points L=4-10; d_eff(9->10)=1.005+/-0.032 | Paper #10 S7 |
-| 15 | d_R converges for 3D Heisenberg toward 1.017 | **Converging** | 7 points L=4-10; d_eff(9->10)=1.013 (two campaigns agree) | Paper #10 S7 |
+| 15 | d_R converges for 3D Heisenberg toward 1.017 | **Converging** | 7 points L=4-10; d_eff(9->10)=1.000 (same-campaign H100 primary) | Paper #10 S7 |
 | 16 | BZ Ising L=9: complete shell decomposition | **Verified** | 15 shells, all R<0, frac_kmin=3.5%, T1/T3=-2.000 | Paper #10 S5 |
 
 ## Key Numbers for Replication
@@ -42,7 +42,7 @@ What is proved, verified, or conjectured.
 | \|R(3D XY, L=10)\| | 6127 +/- 51 | MCMC 10-pass JK |
 | beta_c (3D Heis.) | 0.69305 | MC + RG |
 | \|R(3D Heis., L=10)\| | 3614 +/- 37 | MCMC 10-pass JK (A100 campaign) |
-| \|R(3D Heis., L=10)\| | 3682 +/- 29 | MCMC 9/10 JK (H100 campaign) |
+| \|R(3D Heis., L=10)\| | 3667 +/- 29 | MCMC 9/10 JK (H100 campaign) |
 
 ## CFT Exponents by Universality Class
 
