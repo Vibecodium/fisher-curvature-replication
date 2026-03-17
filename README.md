@@ -50,7 +50,7 @@ Additional datasets:
 - `data/scaling_closure_theorem.json` -- Summary table for all 8 classes
 
 The full dataset is also available on HuggingFace:
-[Zhuravlev/fisher-curvature-scaling](https://huggingface.co/datasets/Zhuravlev/fisher-curvature-scaling)
+[Zhuravlev/fisher-curvature-replication](https://huggingface.co/datasets/Zhuravlev/fisher-curvature-replication)
 
 ---
 
